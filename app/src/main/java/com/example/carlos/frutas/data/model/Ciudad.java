@@ -20,4 +20,17 @@ public class Ciudad {
         this.id = id;
         this.nombre = nombre;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 }

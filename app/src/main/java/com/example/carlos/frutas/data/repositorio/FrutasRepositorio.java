@@ -24,8 +24,8 @@ public class FrutasRepositorio {
         return frutasRepositorio;
     }
 
-    public void anadirFruta(Fruta fruta) {
-
+    public void anadirFruta(Fruta fruta, int ciudad) {
+        FrutasDao.insert(fruta, ciudad);
     }
 
     public boolean existsFruta(Fruta fruta) {
@@ -49,7 +49,8 @@ public class FrutasRepositorio {
         return true;
     }
 
-    public boolean updateFruta(Fruta fruta) {
-        return false;
+    public boolean updateFruta(Fruta fruta, int ciudad) {
+        FrutasDao.update(fruta, ciudad);
+        return true;
     }
 }

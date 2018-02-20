@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,7 @@ import com.example.carlos.frutas.adapter.FrutasAdapter;
 import com.example.carlos.frutas.data.db.FrutasContract;
 import com.example.carlos.frutas.data.db.FrutasOpenHelper;
 import com.example.carlos.frutas.data.model.Fruta;
+import com.example.carlos.frutas.ui.AnadirEditar.vista.AnadirEditarFragment;
 import com.example.carlos.frutas.ui.lista.contract.ListaContract;
 import com.example.carlos.frutas.ui.lista.presenter.ListaPresenter;
 import com.example.carlos.frutas.ui.utils.SharedPreferencesConstants;
@@ -38,11 +40,12 @@ public class ListaFragment extends Fragment implements ListaContract.Vista {
     private ProgressDialog progressDialog;
     private FrutasAdapter adapter;
     private SharedPreferences preferences;
+    private FloatingActionButton fab;
 
     private OnListaListener listener;
 
     public interface OnListaListener {
-
+        void AnadirEditar(Bundle bundle);
     }
 
     public ListaFragment() {
@@ -83,6 +86,17 @@ public class ListaFragment extends Fragment implements ListaContract.Vista {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Fruta clickedFruta = adapter.getItem(i);
+                Bundle b = new Bundle();
+                b.putSerializable(AnadirEditarFragment.ARGS_FRUTA, clickedFruta);
+                listener.AnadirEditar(b);
+            }
+        });
+
+        fab = rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.AnadirEditar(null);
             }
         });
 

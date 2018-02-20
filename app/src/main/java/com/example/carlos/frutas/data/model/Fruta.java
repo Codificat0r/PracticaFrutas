@@ -1,10 +1,12 @@
 package com.example.carlos.frutas.data.model;
 
+import java.io.Serializable;
+
 /**
  * Created by carlos on 19/02/18.
  */
 
-public class Fruta {
+public class Fruta implements Serializable {
     int id;
     String nombre;
     int peso;

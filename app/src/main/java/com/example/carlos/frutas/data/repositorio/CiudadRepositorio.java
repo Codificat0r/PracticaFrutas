@@ -1,5 +1,6 @@
 package com.example.carlos.frutas.data.repositorio;
 
+import com.example.carlos.frutas.data.db.dao.CiudadDao;
 import com.example.carlos.frutas.data.model.Ciudad;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class CiudadRepositorio {
     }
 
     public ArrayList<Ciudad> getCiudades() {
-        return new ArrayList<>();
+        return CiudadDao.loadAll();
     }
 
     public boolean deleteCiudad(Ciudad ciudad) {
