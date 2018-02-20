@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.provider.BaseColumns;
 import android.util.Log;
-
 import com.example.carlos.frutas.data.db.FrutasContract;
 import com.example.carlos.frutas.data.db.FrutasOpenHelper;
 import com.example.carlos.frutas.data.model.Fruta;
@@ -83,6 +82,4 @@ public class FrutasDao {
 
         return resultado;
     }
-
-
 }
